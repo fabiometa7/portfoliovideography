@@ -1,0 +1,11 @@
+# Local-only / not for the website
+.DS_Store
+.claude/
+portfolio-canva-import.html
+
+# Original source video folders (duplicates of assets/, and contain the >100MB file)
+POSITIVE VIBES/
+AI VIRALITY/
+CREATIVE/
+FITNESS/
+MOVIE RECREATIONS/
