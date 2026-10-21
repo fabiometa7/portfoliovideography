@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fabio — Video Portfolio</title>
+<title>Fabio Media — Short-form content & ads die leads opleveren</title>
+<meta name="description" content="Videograaf in Eindhoven. Paid ads, organische short-form, UGC, podcast- en testimonial-edits voor merken en ondernemers. Gewerkt voor Boxbollen, Qbuzz en The High Value Club." />
 <style>
   :root{
     --bg:#0a0a0c;
-    --bg-soft:#131318;
+    --bg-soft:#111116;
     --card:#16161c;
     --text:#f4f4f6;
     --muted:#9a9aa6;
     --line:rgba(255,255,255,.08);
     --accent:#ff5d3b;
     --accent2:#ffb23b;
+    --wa:#25d366;
     --radius:18px;
     --maxw:1240px;
   }
@@ -28,6 +30,19 @@
     overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:14px 24px;border-radius:999px;font-weight:700;font-size:15px;
+    transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-wa{background:var(--wa);color:#05210f;box-shadow:0 10px 30px -10px rgba(37,211,102,.55)}
+  .btn-ghost{border:1px solid rgba(255,255,255,.18);color:var(--text)}
+  .btn-ghost:hover{background:rgba(255,255,255,.06)}
+  .btn svg{flex:none}
 
   /* ---------- NAV ---------- */
   .nav{
@@ -37,289 +52,660 @@
     border-bottom:1px solid var(--line);
   }
   .nav-inner{
-    max-width:var(--maxw);margin:0 auto;padding:16px 24px;
-    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    max-width:var(--maxw);margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
   }
-  .brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+  .brand{font-weight:800;letter-spacing:.04em;font-size:15px}
   .brand span{color:var(--accent)}
-  .nav-links{display:flex;gap:6px;flex-wrap:wrap}
+  .nav-links{display:flex;gap:4px;align-items:center}
   .nav-links a{
-    font-size:12.5px;color:var(--muted);padding:8px 12px;border-radius:999px;
-    transition:.2s;white-space:nowrap;font-weight:500;letter-spacing:.02em;
+    font-size:13px;color:var(--muted);padding:8px 12px;border-radius:999px;
+    transition:.2s;white-space:nowrap;font-weight:500;
   }
   .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+  .lang{
+    display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin-left:8px;
+  }
+  .lang button{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;color:var(--muted)}
+  .lang button.on{background:rgba(255,255,255,.1);color:var(--text)}
+  @media (max-width:820px){ .nav-links a{display:none} .nav-inner{padding:12px 16px} }
 
   /* ---------- HERO ---------- */
   .hero{
-    max-width:var(--maxw);margin:0 auto;padding:96px 24px 64px;
-    text-align:center;position:relative;
+    max-width:var(--maxw);margin:0 auto;padding:84px 24px 56px;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;
   }
-  .hero .eyebrow{
-    color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.22em;
-    text-transform:uppercase;margin-bottom:22px;
+  .eyebrow{
+    color:var(--accent);font-size:12.5px;font-weight:700;letter-spacing:.2em;
+    text-transform:uppercase;margin-bottom:20px;
   }
   .hero h1{
-    font-size:clamp(38px,7vw,76px);line-height:1.02;font-weight:800;letter-spacing:-.02em;
-    background:linear-gradient(180deg,#fff 0%,#b7b7c4 100%);
+    font-size:clamp(36px,5.6vw,68px);line-height:1.03;font-weight:800;letter-spacing:-.025em;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .hero p{
-    max-width:560px;margin:24px auto 0;color:var(--muted);font-size:17px;
-  }
-  .stats{
-    display:flex;gap:40px;justify-content:center;margin-top:44px;flex-wrap:wrap;
-  }
-  .stat .n{font-size:28px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .stat .l{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+  .hero p.lead{max-width:520px;margin-top:22px;color:var(--muted);font-size:17px}
+  .hero .ctas{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+  .stats{display:flex;gap:36px;margin-top:40px;flex-wrap:wrap}
+  .stat .n{font-size:26px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .l{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
 
-  .glow{
-    position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
+  .reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}
+  .reel video{
+    width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px;background:#000;
+    border:1px solid var(--line);
   }
+  .reel video:nth-child(2){transform:translateY(-28px)}
+  .glow{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
   .glow::before{
-    content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);
-    width:680px;height:520px;border-radius:50%;
-    background:radial-gradient(closest-side,rgba(255,93,59,.28),transparent 70%);
+    content:"";position:absolute;top:-180px;left:30%;
+    width:720px;height:560px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(255,93,59,.24),transparent 70%);
     filter:blur(20px);
   }
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding:56px 16px 40px;gap:36px}
+    .reel video:nth-child(2){transform:none}
+  }
+
+  /* ---------- CLIENT STRIP ---------- */
+  .clients{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .clients-inner{
+    max-width:var(--maxw);margin:0 auto;padding:22px 24px;
+    display:flex;align-items:center;gap:20px 40px;flex-wrap:wrap;justify-content:center;
+  }
+  .clients .label{font-size:12px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+  .clients .name{font-size:clamp(16px,2.2vw,22px);font-weight:800;letter-spacing:-.01em;color:#d8d8e0}
 
   /* ---------- SECTIONS ---------- */
-  .section{max-width:var(--maxw);margin:0 auto;padding:56px 24px}
+  .section{max-width:var(--maxw);margin:0 auto;padding:72px 24px}
+  @media (max-width:820px){ .section{padding:52px 16px} .clients-inner{padding:18px 16px} }
   .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px;flex-wrap:wrap}
-  .sec-head h2{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-.01em}
+  .sec-head h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.015em}
   .sec-head .idx{color:var(--accent);font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
-  .sec-head .desc{color:var(--muted);font-size:14px;margin-left:auto;max-width:420px;text-align:right}
+  .sec-head .desc{color:var(--muted);font-size:15px;margin-left:auto;max-width:440px;text-align:right}
+  @media (max-width:820px){ .sec-head .desc{margin-left:0;text-align:left} }
 
-  .grid{
-    display:grid;gap:18px;
-    grid-template-columns:repeat(auto-fill,minmax(380px,1fr));
+  /* services */
+  .services{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .service{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .service .ic{font-size:22px;margin-bottom:14px}
+  .service h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .service p{color:var(--muted);font-size:14.5px}
+
+  /* case studies */
+  .cases{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .case{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
   }
+  .case .media{position:relative;background:#000;cursor:pointer}
+  .case .media video{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+  .case .body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .case .client{font-size:20px;font-weight:800}
+  .case .tags{display:flex;gap:6px;flex-wrap:wrap}
+  .case .tags span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+  .case dl{display:grid;gap:10px}
+  .case dt{font-size:11.5px;color:var(--accent);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .case dd{font-size:14.5px;color:#d4d4dc}
+  .case .result{
+    margin-top:auto;padding:12px 14px;border-radius:12px;
+    background:rgba(255,93,59,.08);border:1px solid rgba(255,93,59,.25);font-weight:600;font-size:14.5px;
+  }
+
+  /* work grid */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+  .filters button{
+    font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;
+    border:1px solid var(--line);color:var(--muted);transition:.2s;
+  }
+  .filters button:hover{color:var(--text)}
+  .filters button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+  .grid .card.wide{grid-column:span 2}
+  @media (max-width:540px){ .grid{grid-template-columns:1fr 1fr;gap:10px} .grid .card.wide{grid-column:span 2} }
   .card{
     position:relative;background:var(--card);border:1px solid var(--line);
     border-radius:var(--radius);overflow:hidden;cursor:pointer;
     transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
   }
-  .card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(255,93,59,.45);
-    box-shadow:0 18px 40px -18px rgba(0,0,0,.8);
+  .card:hover{transform:translateY(-4px);border-color:rgba(255,93,59,.45);box-shadow:0 18px 40px -18px rgba(0,0,0,.8)}
+  .card video{display:block;width:100%;height:100%;background:#000;aspect-ratio:9/16;object-fit:cover}
+  .card.wide video{aspect-ratio:16/9}
+  .card.hide{display:none}
+  .meta{
+    position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;
+    background:linear-gradient(180deg,transparent,rgba(0,0,0,.85));pointer-events:none;
+    transition:opacity .25s;
   }
-  .card video{
-    display:block;width:100%;height:auto;background:#000;
-    aspect-ratio:16/9;object-fit:cover;
-  }
-  .card .meta{
-    position:absolute;left:0;right:0;bottom:0;
-    padding:30px 14px 12px;
-    background:linear-gradient(180deg,transparent,rgba(0,0,0,.82));
-    display:flex;align-items:center;justify-content:space-between;gap:8px;
-    pointer-events:none;
-  }
-  .card .title{font-size:13.5px;font-weight:600;letter-spacing:.01em}
+  .meta .title{font-size:13.5px;font-weight:700;display:block}
+  .meta .sub{font-size:12px;color:#c4c4cc}
   .play{
     position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     transition:opacity .25s;pointer-events:none;
   }
-  .play .btn{
-    width:54px;height:54px;border-radius:50%;
+  .play .pbtn{
+    width:52px;height:52px;border-radius:50%;
     background:rgba(255,255,255,.14);backdrop-filter:blur(6px);
     border:1px solid rgba(255,255,255,.35);
     display:flex;align-items:center;justify-content:center;
   }
-  .play .btn svg{margin-left:3px}
-  .card.playing .play{opacity:0}
-  .card.playing .meta{opacity:0;transition:opacity .25s}
+  .play .pbtn svg{margin-left:3px}
+  .playing .play,.playing .meta{opacity:0}
 
-  /* ---------- FOOTER ---------- */
+  /* packages */
+  .packages{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .pkg{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:14px}
+  .pkg.hot{border-color:rgba(255,93,59,.55);box-shadow:0 0 0 1px rgba(255,93,59,.25) inset}
+  .pkg .name{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .pkg .price{font-size:30px;font-weight:800;letter-spacing:-.02em}
+  .pkg .price small{font-size:14px;color:var(--muted);font-weight:500}
+  .pkg ul{list-style:none;display:grid;gap:8px;font-size:14.5px;color:#d4d4dc}
+  .pkg li::before{content:"✓";color:var(--accent);font-weight:800;margin-right:10px}
+  .pkg .btn{margin-top:auto}
+  .note{color:var(--muted);font-size:14px;margin-top:18px}
+
+  /* process */
+  .steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));counter-reset:s}
+  .step{border-top:2px solid var(--accent);padding-top:18px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-weight:800;color:var(--accent);font-size:14px}
+  .step h3{font-size:18px;margin:6px 0}
+  .step p{color:var(--muted);font-size:14.5px}
+
+  /* contact */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  @media (max-width:900px){ .contact{grid-template-columns:1fr} }
+  .contact h2{font-size:clamp(28px,4.4vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.08}
+  .contact p{color:var(--muted);margin:16px 0 26px;font-size:16px}
+  form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:grid;gap:14px}
+  form .ttl{font-weight:700}
+  label{display:grid;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
+  input,select,textarea{
+    font:inherit;font-size:15px;color:var(--text);background:var(--bg);
+    border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;width:100%;
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+  textarea{min-height:96px;resize:vertical}
+  .hp{position:absolute;left:-9999px}
+  .submit{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#1a0d06}
+  .thanks{display:none;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.4);border-radius:12px;padding:12px 14px;font-weight:600}
+  .thanks.show{display:block}
+
+  /* floating whatsapp */
+  .wa-float{
+    position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;
+    background:var(--wa);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px -8px rgba(0,0,0,.6);transition:transform .2s;
+  }
+  .wa-float:hover{transform:scale(1.06)}
+
   footer{
-    max-width:var(--maxw);margin:0 auto;padding:60px 24px 90px;text-align:center;
-    border-top:1px solid var(--line);margin-top:40px;
+    max-width:var(--maxw);margin:0 auto;padding:36px 24px 100px;
+    border-top:1px solid var(--line);color:var(--muted);font-size:13px;
+    display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
   }
-  footer h3{font-size:26px;font-weight:800;margin-bottom:10px}
-  footer p{color:var(--muted);font-size:14px}
-  footer a.mail{
-    display:inline-block;margin-top:20px;padding:12px 22px;border-radius:999px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2));color:#1a0d06;
-    font-weight:700;font-size:14px;transition:.2s;
-  }
-  footer a.mail:hover{transform:translateY(-2px)}
-  .copy{margin-top:34px;color:var(--muted);font-size:12px;letter-spacing:.04em}
+  footer a:hover{color:var(--text)}
 </style>
 </head>
 <body>
 
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand">FABIO<span>.</span></div>
+      <a class="brand" href="#">FABIO MEDIA<span>.</span></a>
       <div class="nav-links">
-        <a href="#positive-vibes">Positive Vibes</a>
-        <a href="#ai-virality">AI Virality</a>
-        <a href="#creative">Creative</a>
-        <a href="#fitness">Fitness</a>
-        <a href="#movie-recreations">Movie Recreations</a>
+        <a href="#cases" data-i18n="nav.cases"></a>
+        <a href="#work" data-i18n="nav.work"></a>
+        <a href="#packages" data-i18n="nav.packages"></a>
+        <a href="#contact" data-i18n="nav.contact"></a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="nl">NL</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
       </div>
     </div>
   </nav>
 
   <header class="hero">
     <div class="glow"></div>
-    <div class="eyebrow">Video Portfolio</div>
-    <h1>Stories that move,<br/>frames that stick.</h1>
-    <p>A reel of work spanning feel-good travel, AI-driven virality, creative experiments, fitness, and cinematic recreations.</p>
-    <div class="stats">
-      <div class="stat"><div class="n" id="stat-count">—</div><div class="l">Videos</div></div>
-      <div class="stat"><div class="n">5</div><div class="l">Categories</div></div>
-      <div class="stat"><div class="n">∞</div><div class="l">Ideas</div></div>
+    <div>
+      <div class="eyebrow" data-i18n="hero.eyebrow"></div>
+      <h1 data-i18n-html="hero.title"></h1>
+      <p class="lead" data-i18n="hero.lead"></p>
+      <div class="ctas">
+        <a class="btn btn-wa js-wa" target="_blank" rel="noopener"><span class="wa-ic"></span><span data-i18n="cta.wa"></span></a>
+        <a class="btn btn-ghost" href="#work" data-i18n="cta.work"></a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">500K+</div><div class="l" data-i18n="stat.views"></div></div>
+        <div class="stat"><div class="n">3+</div><div class="l" data-i18n="stat.brands"></div></div>
+        <div class="stat"><div class="n">NL · EN</div><div class="l" data-i18n="stat.lang"></div></div>
+      </div>
     </div>
+    <div class="reel" id="reel" aria-hidden="true"></div>
   </header>
 
-  <main id="app"></main>
+  <div class="clients">
+    <div class="clients-inner">
+      <span class="label" data-i18n="clients.label"></span>
+      <span class="name">Boxbollen</span>
+      <span class="name">Qbuzz</span>
+      <span class="name">The High Value Club</span>
+    </div>
+  </div>
+
+  <section class="section" id="services">
+    <div class="sec-head">
+      <span class="idx">01</span>
+      <h2 data-i18n="services.title"></h2>
+      <span class="desc" data-i18n="services.desc"></span>
+    </div>
+    <div class="services" id="services-list"></div>
+  </section>
+
+  <section class="section" id="cases">
+    <div class="sec-head">
+      <span class="idx">02</span>
+      <h2 data-i18n="cases.title"></h2>
+      <span class="desc" data-i18n="cases.desc"></span>
+    </div>
+    <div class="cases" id="cases-list"></div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="sec-head">
+      <span class="idx">03</span>
+      <h2 data-i18n="work.title"></h2>
+      <span class="desc" data-i18n="work.desc"></span>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="section" id="packages">
+    <div class="sec-head">
+      <span class="idx">04</span>
+      <h2 data-i18n="pkg.title"></h2>
+      <span class="desc" data-i18n="pkg.desc"></span>
+    </div>
+    <div class="packages" id="pkg-list"></div>
+    <p class="note" data-i18n="pkg.note"></p>
+  </section>
+
+  <section class="section" id="process">
+    <div class="sec-head">
+      <span class="idx">05</span>
+      <h2 data-i18n="process.title"></h2>
+    </div>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="contact">
+      <div>
+        <div class="eyebrow" data-i18n="contact.eyebrow"></div>
+        <h2 data-i18n="contact.title"></h2>
+        <p data-i18n="contact.lead"></p>
+        <a class="btn btn-wa js-wa" target="_blank" rel="noopener"><span class="wa-ic"></span><span data-i18n="cta.wa"></span></a>
+      </div>
+      <form id="lead-form" action="https://formsubmit.co/fabiometa4@gmail.com" method="POST">
+        <div class="ttl" data-i18n="form.title"></div>
+        <input type="hidden" name="_subject" value="Nieuwe aanvraag via portfolio" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
+        <label><span data-i18n="form.name"></span><input name="naam" required autocomplete="name" /></label>
+        <label><span data-i18n="form.business"></span><input name="bedrijf" required autocomplete="organization" /></label>
+        <label><span data-i18n="form.contact"></span><input name="email_of_telefoon" required /></label>
+        <label><span data-i18n="form.need"></span>
+          <select name="behoefte" required>
+            <option value="" data-i18n="form.choose"></option>
+            <option data-i18n="svc.ads.t"></option>
+            <option data-i18n="svc.organic.t"></option>
+            <option data-i18n="svc.ugc.t"></option>
+            <option data-i18n="svc.podcast.t"></option>
+            <option data-i18n="svc.ai.t"></option>
+            <option data-i18n="form.unsure"></option>
+          </select>
+        </label>
+        <label><span data-i18n="form.budget"></span>
+          <select name="budget">
+            <option value="" data-i18n="form.choose"></option>
+            <option>&lt; €750</option>
+            <option>€750 – €1.500</option>
+            <option>€1.500 – €3.000</option>
+            <option>€3.000+</option>
+          </select>
+        </label>
+        <label><span data-i18n="form.msg"></span><textarea name="bericht"></textarea></label>
+        <button class="btn submit" type="submit" data-i18n="form.send"></button>
+        <div class="thanks" id="thanks" data-i18n="form.thanks"></div>
+      </form>
+    </div>
+  </section>
 
   <footer>
-    <h3>Let's make something worth watching.</h3>
-    <p>Open to collaborations, brand work, and creative briefs.</p>
-    <a class="mail" href="mailto:fabiometa4@gmail.com">Get in touch</a>
-    <div class="copy">© <span id="yr"></span> Fabio — All videos and concepts are original work.</div>
+    <span>© <span id="yr"></span> Fabio Media · Eindhoven</span>
+    <span><a href="https://www.instagram.com/fabiometa_/" target="_blank" rel="noopener">Instagram</a> · <a href="mailto:fabiometa4@gmail.com">fabiometa4@gmail.com</a></span>
   </footer>
 
+  <a class="wa-float js-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="wa-ic"></span></a>
+
 <script>
-  const CATEGORIES = [
-    {
-      id:"positive-vibes", title:"Positive Vibes",
-      desc:"Bright, feel-good travel and lifestyle moments.",
-      folder:"POSITIVE VIBES",
-      videos:[
-        ["summer day positive1.mp4","Summer Day"],
-        ["japan positive2.mp4","Japan"],
-        ["thailand positive3.mp4","Thailand"],
-        ["thailand positive4.mp4","Thailand II"],
-        ["explore positive6.mp4","Explore"],
-      ]
-    },
-    {
-      id:"ai-virality", title:"AI Virality",
-      desc:"AI-assisted concepts built to spread.",
-      folder:"AI VIRALITY",
-      videos:[
-        ["ai1.mov","AI Concept 01"],
-        ["ai2.mov","AI Concept 02"],
-        ["ai3.mp4","AI Concept 03"],
-      ]
-    },
-    {
-      id:"creative", title:"Creative",
-      desc:"Experiments in edit, motion, and idea.",
-      folder:"CREATIVE",
-      videos:[
-        ["creative1.mp4","Creative 01"],
-        ["creative6.mp4","Creative 02"],
-        ["creative7.mp4","Creative 03"],
-        ["creative8.mp4","Creative 04"],
-      ]
-    },
-    {
-      id:"fitness", title:"Fitness",
-      desc:"Training, energy, and movement.",
-      folder:"FITNESS",
-      videos:[
-        ["fitness1.mp4","Fitness 01"],
-        ["fitness3.mp4","Fitness 02"],
-        ["fitness4.mp4","Fitness 03"],
-      ]
-    },
-    {
-      id:"movie-recreations", title:"Movie Recreations",
-      desc:"Cinematic scenes, reimagined.",
-      folder:"MOVIE RECREATIONS",
-      videos:[
-        ["the accident.mp4","The Accident"],
-        ["dark gym night.mp4","Dark Gym Night"],
-        ["toronto nights.mov","Toronto Nights"],
-      ]
-    },
+  const WA_NUMBER = "31682832393";
+
+  // tag: ads | organic | ugc | podcast | ai     wide: true for 16:9 footage
+  const WORK = [
+    { file:"ai1.mov", title:"AI Concept 01", client:"Fabio Media", tag:"ai", wide:true },
+    { file:"ai2.mov", title:"AI Concept 02", client:"Fabio Media", tag:"ai", wide:true },
+    { file:"ai3.mp4", title:"AI Concept 03", client:"Fabio Media", tag:"ai", wide:true },
   ];
 
+  // First vertical clips are used in the hero reel; falls back to any clip.
+  const REEL = WORK.slice(0, 3);
+
+  const CASES = [
+    { client:"The High Value Club", file:null,           tags:["ads","podcast","organic"], key:"hvc" },
+    { client:"Boxbollen",           file:null,           tags:["organic"],                key:"box" },
+    { client:"Qbuzz",               file:null,           tags:["organic"],                key:"qbuzz" },
+  ];
+
+  const SERVICES = [
+    { key:"ads",     ic:"🎯" },
+    { key:"organic", ic:"📱" },
+    { key:"ugc",     ic:"🤳" },
+    { key:"podcast", ic:"🎙️" },
+    { key:"ai",      ic:"✨" },
+  ];
+
+  const T = {
+    nl:{
+      "nav.cases":"Cases","nav.work":"Werk","nav.packages":"Pakketten","nav.contact":"Contact",
+      "hero.eyebrow":"Videografie & content · Eindhoven",
+      "hero.title":"Short-form content & ads die <em>leads opleveren.</em>",
+      "hero.lead":"Ik film, edit en plan content voor merken en ondernemers. Van paid ads tot organische reels, UGC en podcasts. Eén aanspreekpunt, van idee tot post.",
+      "cta.wa":"Stuur een WhatsApp","cta.work":"Bekijk werk",
+      "stat.views":"views op één reel","stat.brands":"merken","stat.lang":"content in beide talen",
+      "clients.label":"Gewerkt voor",
+      "services.title":"Wat ik maak","services.desc":"Alles wat je nodig hebt om met video klanten binnen te halen.",
+      "svc.ads.t":"Paid ads","svc.ads.d":"Concept, script, opname en edit voor Meta- en TikTok-advertenties die leads opleveren.",
+      "svc.organic.t":"Organische short-form","svc.organic.d":"Reels, TikToks en Shorts die je merk zichtbaar maken en volgers omzetten in klanten.",
+      "svc.ugc.t":"UGC","svc.ugc.d":"Authentieke creator-content voor je product of dienst. Voelt echt, verkoopt beter.",
+      "svc.podcast.t":"Podcasts & testimonials","svc.podcast.d":"Podcasts geknipt tot clips en klantverhalen die vertrouwen opbouwen.",
+      "svc.ai.t":"AI-content","svc.ai.d":"AI-effecten en visuals die opvallen in de feed. Mijn best bekeken video: 500K+ views.",
+      "cases.title":"Cases","cases.desc":"Wat klanten nodig hadden, wat ik maakte en wat het opleverde.",
+      "case.need":"Vraag","case.made":"Gemaakt",
+      "case.hvc.need":"Meer leden en een vaste stroom content voor de gym.",
+      "case.hvc.made":"Paid ads, podcast-edits, klanttestimonials en een eventdag.",
+      "case.hvc.result":"Verlengd met een groter tweede pakket.",
+      "case.box.need":"Content voor hun complete ecom-school community.",
+      "case.box.made":"Editing van alle community- en cursuscontent.",
+      "case.box.result":"",
+      "case.qbuzz.need":"Short-form video's voor organische socials.",
+      "case.qbuzz.made":"Shorts voor organisch posten.",
+      "case.qbuzz.result":"",
+      "work.title":"Werk","work.desc":"Klik op een video om hem met geluid af te spelen.",
+      "filter.all":"Alles","filter.ads":"Ads","filter.organic":"Organisch","filter.ugc":"UGC","filter.podcast":"Podcast","filter.ai":"AI",
+      "pkg.title":"Pakketten","pkg.desc":"Start met een pilot. Bevalt het? Dan gaan we maandelijks verder.",
+      "pkg.pilot.n":"Pilot","pkg.pilot.p":"vanaf €750","pkg.pilot.s":"eenmalig",
+      "pkg.pilot.l":["1 opnamedag","6 short-form video's","Simpel contentplan"],
+      "pkg.growth.n":"Growth","pkg.growth.p":"Maandelijks","pkg.growth.s":"op maat",
+      "pkg.growth.l":["2 opnamedagen per maand","10–12 video's","Contentstrategie & captions"],
+      "pkg.premium.n":"Premium","pkg.premium.p":"Maandelijks","pkg.premium.s":"op maat",
+      "pkg.premium.l":["Alles uit Growth","Paid ads & AI-ads","Event-coverage"],
+      "pkg.cta":"Vraag een voorstel aan",
+      "pkg.note":"Prijzen voor Growth en Premium hangen af van het aantal video's en opnamedagen. Stuur een WhatsApp voor een voorstel op maat.",
+      "process.title":"Zo werkt het",
+      "step1.t":"Stuur een WhatsApp","step1.d":"Vertel kort wat je bedrijf doet en wat je nodig hebt. Geen call nodig.",
+      "step2.t":"Contentplan","step2.d":"Je krijgt ideeën en een voorstel op maat, afgestemd op je doelen.",
+      "step3.t":"Opname & levering","step3.d":"Ik film, edit en lever kant-en-klare video's, klaar om te posten of te adverteren.",
+      "contact.eyebrow":"Contact","contact.title":"Klaar voor content die klanten oplevert?",
+      "contact.lead":"De snelste weg is WhatsApp. Liever een formulier? Vul het in en ik neem contact met je op.",
+      "form.title":"Of laat je gegevens achter","form.name":"Naam","form.business":"Bedrijf",
+      "form.contact":"E-mail of telefoon","form.need":"Waar heb je hulp bij nodig?","form.choose":"Kies…",
+      "form.unsure":"Weet ik nog niet","form.budget":"Budget per maand (optioneel)","form.msg":"Bericht (optioneel)",
+      "form.send":"Verstuur","form.thanks":"Bedankt! Ik neem zo snel mogelijk contact met je op.",
+      "wa.msg":"Hoi Fabio, ik zag je portfolio en wil graag meer weten over content voor mijn bedrijf.",
+    },
+    en:{
+      "nav.cases":"Cases","nav.work":"Work","nav.packages":"Packages","nav.contact":"Contact",
+      "hero.eyebrow":"Video & content · Eindhoven, NL",
+      "hero.title":"Short-form content & ads that <em>bring in leads.</em>",
+      "hero.lead":"I film, edit and plan content for brands and business owners. From paid ads to organic reels, UGC and podcasts. One point of contact, from idea to post.",
+      "cta.wa":"Message me on WhatsApp","cta.work":"See the work",
+      "stat.views":"views on one reel","stat.brands":"brands","stat.lang":"content in both languages",
+      "clients.label":"Worked with",
+      "services.title":"What I make","services.desc":"Everything you need to win customers with video.",
+      "svc.ads.t":"Paid ads","svc.ads.d":"Concept, script, shoot and edit for Meta and TikTok ads that bring in leads.",
+      "svc.organic.t":"Organic short-form","svc.organic.d":"Reels, TikToks and Shorts that get your brand seen and turn followers into customers.",
+      "svc.ugc.t":"UGC","svc.ugc.d":"Authentic creator content for your product or service. Feels real, sells better.",
+      "svc.podcast.t":"Podcasts & testimonials","svc.podcast.d":"Podcasts cut into clips, and customer stories that build trust.",
+      "svc.ai.t":"AI content","svc.ai.d":"AI effects and visuals that stop the scroll. My most-watched video: 500K+ views.",
+      "cases.title":"Cases","cases.desc":"What clients needed, what I made, and what it delivered.",
+      "case.need":"Brief","case.made":"Made",
+      "case.hvc.need":"More members and a steady flow of content for the gym.",
+      "case.hvc.made":"Paid ads, podcast edits, client testimonials and an event day.",
+      "case.hvc.result":"Re-signed for a bigger second package.",
+      "case.box.need":"Content for their entire e-com school community.",
+      "case.box.made":"Editing of all community and course content.",
+      "case.box.result":"",
+      "case.qbuzz.need":"Short-form videos for organic social.",
+      "case.qbuzz.made":"Shorts for organic posting.",
+      "case.qbuzz.result":"",
+      "work.title":"Work","work.desc":"Click a video to play it with sound.",
+      "filter.all":"All","filter.ads":"Ads","filter.organic":"Organic","filter.ugc":"UGC","filter.podcast":"Podcast","filter.ai":"AI",
+      "pkg.title":"Packages","pkg.desc":"Start with a pilot. Like it? Then we continue monthly.",
+      "pkg.pilot.n":"Pilot","pkg.pilot.p":"from €750","pkg.pilot.s":"one-off",
+      "pkg.pilot.l":["1 shoot day","6 short-form videos","Simple content plan"],
+      "pkg.growth.n":"Growth","pkg.growth.p":"Monthly","pkg.growth.s":"tailored",
+      "pkg.growth.l":["2 shoot days a month","10–12 videos","Content strategy & captions"],
+      "pkg.premium.n":"Premium","pkg.premium.p":"Monthly","pkg.premium.s":"tailored",
+      "pkg.premium.l":["Everything in Growth","Paid ads & AI ads","Event coverage"],
+      "pkg.cta":"Request a proposal",
+      "pkg.note":"Growth and Premium pricing depends on the number of videos and shoot days. Send a WhatsApp for a tailored proposal.",
+      "process.title":"How it works",
+      "step1.t":"Send a WhatsApp","step1.d":"Tell me briefly what your business does and what you need. No call needed.",
+      "step2.t":"Content plan","step2.d":"You get ideas and a tailored proposal, built around your goals.",
+      "step3.t":"Shoot & deliver","step3.d":"I film, edit and deliver finished videos, ready to post or run as ads.",
+      "contact.eyebrow":"Contact","contact.title":"Ready for content that brings in customers?",
+      "contact.lead":"WhatsApp is the fastest way. Prefer a form? Fill it in and I'll get back to you.",
+      "form.title":"Or leave your details","form.name":"Name","form.business":"Business",
+      "form.contact":"Email or phone","form.need":"What do you need help with?","form.choose":"Choose…",
+      "form.unsure":"Not sure yet","form.budget":"Monthly budget (optional)","form.msg":"Message (optional)",
+      "form.send":"Send","form.thanks":"Thanks! I'll get back to you as soon as possible.",
+      "wa.msg":"Hi Fabio, I saw your portfolio and I'd like to know more about content for my business.",
+    },
+  };
+
+  const WA_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.41 9.41 0 0 1 2.77 6.7c0 5.22-4.25 9.47-9.47 9.47zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.18-5.9-3.33-8.05z"/></svg>';
   const PLAY_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
 
-  const app = document.getElementById("app");
-  let total = 0;
-  let activeVideo = null;
+  const src = f => encodeURI("assets/" + f);
+  // Posters live next to the video as <name>.jpg once compressed; missing posters are harmless.
+  const poster = f => encodeURI("assets/" + f.replace(/\.[^.]+$/, ".jpg"));
 
-  CATEGORIES.forEach((cat, i) => {
-    total += cat.videos.length;
-    const sec = document.createElement("section");
-    sec.className = "section";
-    sec.id = cat.id;
+  let lang = "nl";
+  try { const saved = localStorage.getItem("lang"); if (saved === "nl" || saved === "en") lang = saved; } catch(e){}
+  const t = k => T[lang][k] ?? T.nl[k] ?? "";
 
-    const num = String(i+1).padStart(2,"0");
-    sec.innerHTML = `
-      <div class="sec-head">
-        <span class="idx">${num}</span>
-        <h2>${cat.title}</h2>
-        <span class="desc">${cat.desc}</span>
-      </div>
-      <div class="grid"></div>`;
-    const grid = sec.querySelector(".grid");
-
-    cat.videos.forEach(([file, title]) => {
-      const src = encodeURI("assets/" + file);
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <video preload="metadata" playsinline loop muted src="${src}#t=0.1"></video>
-        <div class="play"><div class="btn">${PLAY_SVG}</div></div>
-        <div class="meta"><span class="title">${title}</span></div>`;
-
-      const vid = card.querySelector("video");
-
-      // Paint a first-frame thumbnail so cards aren't blank before hover
-      vid.addEventListener("loadedmetadata", () => {
-        try { if (vid.currentTime === 0) vid.currentTime = 0.1; } catch(e){}
-      }, { once:true });
-
-      // Hover = silent preview
-      card.addEventListener("mouseenter", () => {
-        if (card.classList.contains("playing")) return;
-        vid.muted = true;
-        vid.play().catch(()=>{});
-      });
-      card.addEventListener("mouseleave", () => {
-        if (card.classList.contains("playing")) return;
-        vid.pause();
-      });
-
-      // Click = full play with sound + controls
-      card.addEventListener("click", () => {
-        const wasPlaying = card.classList.contains("playing");
-        // reset previously active
-        if (activeVideo && activeVideo !== vid) {
-          activeVideo.pause();
-          activeVideo.controls = false;
-          activeVideo.muted = true;
-          activeVideo.closest(".card").classList.remove("playing");
-        }
-        if (wasPlaying) {
-          vid.pause();
-          vid.controls = false;
-          vid.muted = true;
-          card.classList.remove("playing");
-          activeVideo = null;
-        } else {
-          card.classList.add("playing");
-          vid.muted = false;
-          vid.controls = true;
-          vid.loop = false;
-          vid.play().catch(()=>{});
-          activeVideo = vid;
-        }
-      });
-
-      grid.appendChild(card);
+  /* ---------- lazy video loading ---------- */
+  const lazy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const v = e.target;
+      if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+      if (v.dataset.autoplay) v.play().catch(()=>{});
+      lazy.unobserve(v);
     });
+  }, { rootMargin:"300px" });
 
-    app.appendChild(sec);
+  function makeVideo(file, { autoplay=false } = {}){
+    const v = document.createElement("video");
+    v.muted = true; v.loop = true; v.playsInline = true;
+    v.setAttribute("playsinline", "");
+    v.preload = "metadata";
+    v.poster = poster(file);
+    v.dataset.src = src(file);
+    if (autoplay) v.dataset.autoplay = "1";
+    lazy.observe(v);
+    return v;
+  }
+
+  /* ---------- click-to-play behaviour, shared by work cards and case media ---------- */
+  let activeVideo = null;
+  function stop(v){
+    v.pause(); v.controls = false; v.muted = true; v.loop = true;
+    v.parentElement.classList.remove("playing");
+  }
+  function attachPlayer(wrap, v){
+    wrap.addEventListener("mouseenter", () => { if (!wrap.classList.contains("playing")) v.play().catch(()=>{}); });
+    wrap.addEventListener("mouseleave", () => { if (!wrap.classList.contains("playing")) v.pause(); });
+    wrap.addEventListener("click", () => {
+      if (activeVideo && activeVideo !== v) stop(activeVideo);
+      if (wrap.classList.contains("playing")) { stop(v); activeVideo = null; return; }
+      wrap.classList.add("playing");
+      v.muted = false; v.controls = true; v.loop = false;
+      v.play().catch(()=>{});
+      activeVideo = v;
+    });
+  }
+
+  /* ---------- render ---------- */
+  function renderReel(){
+    const reel = document.getElementById("reel");
+    reel.innerHTML = "";
+    REEL.forEach(w => reel.appendChild(makeVideo(w.file, { autoplay:true })));
+  }
+
+  function renderServices(){
+    document.getElementById("services-list").innerHTML = SERVICES.map(s => `
+      <div class="service"><div class="ic">${s.ic}</div>
+        <h3>${t(`svc.${s.key}.t`)}</h3><p>${t(`svc.${s.key}.d`)}</p></div>`).join("");
+  }
+
+  function renderCases(){
+    const list = document.getElementById("cases-list");
+    list.innerHTML = "";
+    CASES.forEach(c => {
+      const el = document.createElement("article");
+      el.className = "case";
+      const result = t(`case.${c.key}.result`);
+      el.innerHTML = `
+        ${c.file ? `<div class="media"><div class="play"><div class="pbtn">${PLAY_SVG}</div></div></div>` : ""}
+        <div class="body">
+          <div class="client">${c.client}</div>
+          <div class="tags">${c.tags.map(x => `<span>${t("filter." + x)}</span>`).join("")}</div>
+          <dl>
+            <div><dt>${t("case.need")}</dt><dd>${t(`case.${c.key}.need`)}</dd></div>
+            <div><dt>${t("case.made")}</dt><dd>${t(`case.${c.key}.made`)}</dd></div>
+          </dl>
+          ${result ? `<div class="result">${result}</div>` : ""}
+        </div>`;
+      if (c.file) {
+        const media = el.querySelector(".media");
+        const v = makeVideo(c.file);
+        media.prepend(v);
+        attachPlayer(media, v);
+      }
+      list.appendChild(el);
+    });
+  }
+
+  let filter = "all";
+  function renderFilters(){
+    const used = ["all", ...new Set(WORK.map(w => w.tag))];
+    document.getElementById("filters").innerHTML = used.map(k =>
+      `<button type="button" data-f="${k}" class="${k === filter ? "on" : ""}">${t("filter." + k)}</button>`).join("");
+  }
+  function applyFilter(){
+    document.querySelectorAll("#grid .card").forEach(c =>
+      c.classList.toggle("hide", filter !== "all" && c.dataset.tag !== filter));
+    document.querySelectorAll("#filters button").forEach(b => b.classList.toggle("on", b.dataset.f === filter));
+  }
+  document.getElementById("filters").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    filter = b.dataset.f;
+    if (activeVideo) { stop(activeVideo); activeVideo = null; }
+    applyFilter();
   });
 
-  document.getElementById("stat-count").textContent = total;
+  function renderGrid(){
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    WORK.forEach(w => {
+      const card = document.createElement("div");
+      card.className = "card" + (w.wide ? " wide" : "");
+      card.dataset.tag = w.tag;
+      card.innerHTML = `
+        <div class="play"><div class="pbtn">${PLAY_SVG}</div></div>
+        <div class="meta"><span class="title">${w.title}</span><span class="sub">${w.client}</span></div>`;
+      const v = makeVideo(w.file);
+      card.prepend(v);
+      attachPlayer(card, v);
+      grid.appendChild(card);
+    });
+    applyFilter();
+  }
+
+  function renderPackages(){
+    document.getElementById("pkg-list").innerHTML = ["pilot","growth","premium"].map(k => `
+      <div class="pkg ${k === "growth" ? "hot" : ""}">
+        <div class="name">${t(`pkg.${k}.n`)}</div>
+        <div class="price">${t(`pkg.${k}.p`)} <small>${t(`pkg.${k}.s`)}</small></div>
+        <ul>${T[lang][`pkg.${k}.l`].map(li => `<li>${li}</li>`).join("")}</ul>
+        <a class="btn btn-ghost js-wa" target="_blank" rel="noopener">${t("pkg.cta")}</a>
+      </div>`).join("");
+  }
+
+  function renderSteps(){
+    document.getElementById("steps").innerHTML = [1,2,3].map(n => `
+      <div class="step"><h3>${t(`step${n}.t`)}</h3><p>${t(`step${n}.d`)}</p></div>`).join("");
+  }
+
+  function applyText(){
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
+    const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(t("wa.msg"))}`;
+    document.querySelectorAll(".js-wa").forEach(a => a.href = waHref);
+    document.querySelectorAll(".wa-ic").forEach(s => s.innerHTML = WA_SVG);
+  }
+
+  function render(){
+    renderServices(); renderCases(); renderFilters(); renderPackages(); renderSteps();
+    applyText(); applyFilter();
+  }
+
+  document.querySelector(".lang").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    lang = b.dataset.lang;
+    try { localStorage.setItem("lang", lang); } catch(e){}
+    render();
+  });
+
+  /* ---------- form: submit in the background, show a thank-you ---------- */
+  document.getElementById("lead-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector(".submit");
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+        method:"POST", headers:{ Accept:"application/json" }, body:new FormData(form),
+      });
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      document.getElementById("thanks").classList.add("show");
+    } catch(err) {
+      form.submit(); // fall back to a normal post
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  renderReel(); renderGrid(); render();
   document.getElementById("yr").textContent = new Date().getFullYear();
 </script>
 </body>
