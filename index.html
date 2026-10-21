@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Fabio — Short-form content & ads die leads opleveren</title>
 <meta name="description" content="Videograaf in Eindhoven. Paid ads, organische short-form, UGC, podcast- en testimonial-edits voor merken en ondernemers. Gewerkt voor Boxbollen, Qbuzz, The High Value Club en Bij Albrecht." />
 <style>
@@ -226,7 +226,7 @@
   form .ttl{font-weight:700}
   label{display:grid;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
   input,select,textarea{
-    font:inherit;font-size:15px;color:var(--text);background:var(--bg);
+    font:inherit;font-size:16px;color:var(--text);background:var(--bg);
     border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;width:100%;
   }
   input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
@@ -238,11 +238,14 @@
 
   /* floating whatsapp */
   .wa-float{
-    position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;
+    position:fixed;right:calc(16px + env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));
+    z-index:60;width:58px;height:58px;border-radius:50%;
     background:var(--wa);display:flex;align-items:center;justify-content:center;
     box-shadow:0 12px 30px -8px rgba(0,0,0,.6);transition:transform .2s;
   }
   .wa-float:hover{transform:scale(1.06)}
+  .wa-float.away{opacity:0;transform:scale(.6);pointer-events:none}
+  .wa-float{transition:transform .2s,opacity .2s}
 
   footer{
     max-width:var(--maxw);margin:0 auto;padding:36px 24px 100px;
@@ -250,6 +253,63 @@
     display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
   }
   footer a:hover{color:var(--text)}
+
+  .swipe-hint{display:none}
+
+  /* ---------- PHONE ---------- */
+  @media (max-width:820px){
+    /* hero order on phones: headline, buttons, video clips, then stats */
+    .hero{padding-top:36px;gap:0;grid-template-columns:minmax(0,1fr)}
+    .hero-text{display:contents}
+    .hero .eyebrow{order:1;margin-bottom:14px}
+    .hero h1{order:2}
+    .hero p.lead{order:3;font-size:16px;margin-top:16px}
+    .hero .ctas{order:4;margin-top:22px;gap:10px}
+    .hero .ctas .btn{flex:1 1 auto;padding:14px 18px}
+    .reel{order:5;margin-top:28px;gap:8px}
+    .stats{order:6;gap:22px;flex-wrap:nowrap;margin-top:28px}
+    .stat .n{font-size:21px}
+    .stat .l{font-size:10.5px;letter-spacing:.04em}
+
+    /* side-swipe rows instead of long stacks */
+    .services,.cases,.packages{
+      display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+      margin:0 -16px;padding:0 16px 4px;scroll-padding-left:16px;scrollbar-width:none;
+    }
+    .services::-webkit-scrollbar,.cases::-webkit-scrollbar,.packages::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
+    .service{flex:0 0 72%;scroll-snap-align:start}
+    .case,.pkg{flex:0 0 84%;scroll-snap-align:start}
+    .swipe-hint{display:block;color:var(--muted);font-size:13px;margin-top:12px}
+
+    .filters{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px 18px;padding:0 16px;scrollbar-width:none}
+    .filters button{flex:none;padding:10px 16px;font-size:14px}
+    .card:hover{transform:none}
+  }
+
+  /* small phones (iPhone SE and similar) */
+  @media (max-width:380px){
+    .hero .eyebrow{letter-spacing:.12em;font-size:11.5px}
+    .hero h1{font-size:31px}
+    .hero p.lead{font-size:15px}
+    .stats{gap:16px}
+  }
+
+  /* ---------- FULL-SCREEN VIEWER (phones) ---------- */
+  .lb{position:fixed;inset:0;z-index:100;background:#000;display:none;align-items:center;justify-content:center;touch-action:pan-x}
+  .lb.open{display:flex}
+  .lb video{width:100%;height:100%;object-fit:contain;background:#000}
+  .lb-top{
+    position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+    padding:calc(12px + env(safe-area-inset-top)) 16px 36px;background:linear-gradient(rgba(0,0,0,.7),transparent);
+  }
+  .lb-title strong{display:block;font-size:15px}
+  .lb-title span{font-size:12.5px;color:#c4c4cc}
+  .lb-btn{
+    flex:none;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.16);
+    display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;
+  }
+  .lb-nav{position:absolute;right:calc(12px + env(safe-area-inset-right));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px}
+  .lb.single .lb-nav{display:none}
 </style>
 </head>
 <body>
@@ -272,7 +332,7 @@
 
   <header class="hero">
     <div class="glow"></div>
-    <div>
+    <div class="hero-text">
       <div class="eyebrow" data-i18n="hero.eyebrow"></div>
       <h1 data-i18n-html="hero.title"></h1>
       <p class="lead" data-i18n="hero.lead"></p>
@@ -316,6 +376,7 @@
       <span class="desc" data-i18n="services.desc"></span>
     </div>
     <div class="services" id="services-list"></div>
+    <p class="swipe-hint" data-i18n="swipe"></p>
   </section>
 
   <section class="section" id="cases">
@@ -325,6 +386,7 @@
       <span class="desc" data-i18n="cases.desc"></span>
     </div>
     <div class="cases" id="cases-list"></div>
+    <p class="swipe-hint" data-i18n="swipe"></p>
   </section>
 
   <section class="section" id="work">
@@ -344,6 +406,7 @@
       <span class="desc" data-i18n="pkg.desc"></span>
     </div>
     <div class="packages" id="pkg-list"></div>
+    <p class="swipe-hint" data-i18n="swipe"></p>
     <p class="note" data-i18n="pkg.note"></p>
   </section>
 
@@ -404,6 +467,18 @@
   </footer>
 
   <a class="wa-float js-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="wa-ic"></span></a>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
+    <video playsinline controls preload="auto"></video>
+    <div class="lb-top">
+      <div class="lb-title"><strong></strong><span></span></div>
+      <button type="button" class="lb-btn" data-lb="close" aria-label="Close">✕</button>
+    </div>
+    <div class="lb-nav">
+      <button type="button" class="lb-btn" data-lb="prev" aria-label="Previous">↑</button>
+      <button type="button" class="lb-btn" data-lb="next" aria-label="Next">↓</button>
+    </div>
+  </div>
 
 <script>
   const WA_NUMBER = "31682832393";
@@ -487,7 +562,8 @@
       "case.qbuzz.need":"Medewerkers zelf laten vertellen over veilig werken.",
       "case.qbuzz.made":"Een reeks van 5 ondertitelde shorts met medewerkers.",
       "case.qbuzz.result":"",
-      "work.title":"Werk","work.desc":"Klik op een video om hem met geluid af te spelen.",
+      "work.title":"Werk","work.desc":"Tik of klik op een video om hem met geluid te bekijken.",
+      "swipe":"Swipe voor meer →","lb.count":"van",
       "filter.all":"Alles","filter.food":"Horeca","filter.ads":"Ads","filter.organic":"Organisch","filter.ugc":"UGC","filter.podcast":"Podcast & testimonials","filter.ai":"AI",
       "pkg.title":"Pakketten","pkg.desc":"Start met een pilot. Bevalt het? Dan gaan we maandelijks verder.",
       "pkg.pilot.n":"Pilot","pkg.pilot.p":"vanaf €750","pkg.pilot.s":"eenmalig",
@@ -538,7 +614,8 @@
       "case.qbuzz.need":"Let employees tell the story of working safely, in their own words.",
       "case.qbuzz.made":"A series of 5 subtitled shorts featuring employees.",
       "case.qbuzz.result":"",
-      "work.title":"Work","work.desc":"Click a video to play it with sound.",
+      "work.title":"Work","work.desc":"Tap or click a video to watch it with sound.",
+      "swipe":"Swipe for more →","lb.count":"of",
       "filter.all":"All","filter.food":"Hospitality","filter.ads":"Ads","filter.organic":"Organic","filter.ugc":"UGC","filter.podcast":"Podcast & testimonials","filter.ai":"AI",
       "pkg.title":"Packages","pkg.desc":"Start with a pilot. Like it? Then we continue monthly.",
       "pkg.pilot.n":"Pilot","pkg.pilot.p":"from €750","pkg.pilot.s":"one-off",
@@ -574,12 +651,19 @@
   try { const saved = localStorage.getItem("lang"); if (saved === "nl" || saved === "en") lang = saved; } catch(e){}
   const t = k => T[lang][k] ?? T.nl[k] ?? "";
 
+  // Phones and touch screens open videos in the full-screen viewer instead of playing them in the tile.
+  const touchLayout = matchMedia("(max-width: 820px), (pointer: coarse)");
+
   /* ---------- lazy video loading ---------- */
+  function ensureSrc(v){
+    if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+  }
   const lazy = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const v = e.target;
-      if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+      // Tiles on phones keep just their poster, which saves mobile data.
+      if (v.dataset.autoplay || !touchLayout.matches) ensureSrc(v);
       if (v.dataset.autoplay) v.play().catch(()=>{});
       lazy.unobserve(v);
     });
@@ -603,10 +687,15 @@
     v.pause(); v.controls = false; v.muted = true; v.loop = true;
     v.parentElement.classList.remove("playing");
   }
-  function attachPlayer(wrap, v){
-    wrap.addEventListener("mouseenter", () => { if (!wrap.classList.contains("playing")) v.play().catch(()=>{}); });
+  function attachPlayer(wrap, v, openViewer){
+    wrap.addEventListener("mouseenter", () => {
+      if (touchLayout.matches || wrap.classList.contains("playing")) return;
+      ensureSrc(v); v.play().catch(()=>{});
+    });
     wrap.addEventListener("mouseleave", () => { if (!wrap.classList.contains("playing")) v.pause(); });
     wrap.addEventListener("click", () => {
+      if (touchLayout.matches) { openViewer(); return; }
+      ensureSrc(v);
       if (activeVideo && activeVideo !== v) stop(activeVideo);
       if (wrap.classList.contains("playing")) { stop(v); activeVideo = null; return; }
       wrap.classList.add("playing");
@@ -615,6 +704,73 @@
       activeVideo = v;
     });
   }
+
+  // Hide the floating WhatsApp button while a big WhatsApp button is already on screen.
+  const waFloat = document.querySelector(".wa-float");
+  const onScreen = new Set();
+  const waObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target));
+    waFloat.classList.toggle("away", onScreen.size > 0);
+  });
+  document.querySelectorAll(".btn-wa").forEach(el => waObserver.observe(el));
+
+  /* ---------- full-screen viewer ---------- */
+  const lb = document.getElementById("lb");
+  const lbVideo = lb.querySelector("video");
+  let lbList = [], lbIndex = 0;
+
+  function showInViewer(){
+    const w = lbList[lbIndex];
+    lbVideo.poster = poster(w.file);
+    lbVideo.src = src(w.file);
+    lb.querySelector(".lb-title strong").textContent = w.title;
+    lb.querySelector(".lb-title span").textContent =
+      lbList.length > 1 ? `${w.client} · ${lbIndex + 1} ${t("lb.count")} ${lbList.length}` : w.client;
+    lbVideo.play().catch(()=>{});
+  }
+  function openViewer(list, index){
+    if (activeVideo) { stop(activeVideo); activeVideo = null; }
+    lbList = list; lbIndex = Math.max(0, index);
+    lb.classList.toggle("single", list.length < 2);
+    lb.classList.add("open");
+    document.body.style.overflow = "hidden";
+    history.pushState({ viewer:true }, "");
+    showInViewer();
+  }
+  function closeViewer(fromHistory){
+    if (!lb.classList.contains("open")) return;
+    lbVideo.pause(); lbVideo.removeAttribute("src"); lbVideo.load();
+    lb.classList.remove("open");
+    document.body.style.overflow = "";
+    if (!fromHistory && history.state && history.state.viewer) history.back();
+  }
+  function step(d){
+    if (lbList.length < 2) return;
+    lbIndex = (lbIndex + d + lbList.length) % lbList.length;
+    showInViewer();
+  }
+  lb.addEventListener("click", e => {
+    const b = e.target.closest("[data-lb]"); if (!b) return;
+    if (b.dataset.lb === "close") closeViewer();
+    else step(b.dataset.lb === "next" ? 1 : -1);
+  });
+  lbVideo.addEventListener("ended", () => step(1));
+  // Swipe up for the next video, down for the previous one, like Reels.
+  let touchY = null, touchX = null;
+  lb.addEventListener("touchstart", e => { touchY = e.touches[0].clientY; touchX = e.touches[0].clientX; }, { passive:true });
+  lb.addEventListener("touchend", e => {
+    if (touchY === null) return;
+    const dy = e.changedTouches[0].clientY - touchY, dx = e.changedTouches[0].clientX - touchX;
+    touchY = touchX = null;
+    if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx)) step(dy < 0 ? 1 : -1);
+  });
+  addEventListener("popstate", () => closeViewer(true));
+  addEventListener("keydown", e => {
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") closeViewer();
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") step(1);
+    if (e.key === "ArrowUp" || e.key === "ArrowLeft") step(-1);
+  });
 
   /* ---------- render ---------- */
   function renderReel(){
@@ -651,7 +807,7 @@
         const media = el.querySelector(".media");
         const v = makeVideo(c.file);
         media.prepend(v);
-        attachPlayer(media, v);
+        attachPlayer(media, v, () => openViewer([{ file:c.file, title:c.client, client:c.tags.map(x => t("filter." + x)).join(" · ") }], 0));
       }
       list.appendChild(el);
     });
@@ -687,7 +843,10 @@
         <div class="meta"><span class="title">${w.title}</span><span class="sub">${w.client}</span></div>`;
       const v = makeVideo(w.file);
       card.prepend(v);
-      attachPlayer(card, v);
+      attachPlayer(card, v, () => {
+        const list = WORK.filter(x => filter === "all" || x.tag === filter);
+        openViewer(list, list.indexOf(w));
+      });
       grid.appendChild(card);
     });
     applyFilter();
