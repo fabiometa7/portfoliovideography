@@ -1,0 +1,31 @@
+# Read-only: lists what the FTP account can see on the Vimexx server.
+# It changes nothing on the server.
+name: Inspect server
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/great-hypatia-i9mtii]
+    paths: [.github/workflows/inspect-server.yml]
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: List folders (3 levels deep)
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" <<'LFTP'
+          set ftp:ssl-allow yes
+          set net:timeout 20
+          set net:max-retries 2
+          pwd
+          find --maxdepth=3 -l .
+          bye
+          LFTP
