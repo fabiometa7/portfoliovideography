@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fabio — Short-form content & ads die leads opleveren</title>
-<meta name="description" content="Videograaf in Eindhoven. Paid ads, organische short-form, UGC, podcast- en testimonial-edits voor merken en ondernemers. Gewerkt voor Boxbollen, Qbuzz en The High Value Club." />
+<meta name="description" content="Videograaf in Eindhoven. Paid ads, organische short-form, UGC, podcast- en testimonial-edits voor merken en ondernemers. Gewerkt voor Boxbollen, Qbuzz, The High Value Club en Bij Albrecht." />
 <style>
   :root{
     --bg:#0a0a0c;
@@ -137,7 +137,7 @@
   .service p{color:var(--muted);font-size:14.5px}
 
   /* case studies */
-  .cases{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .cases{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
   .case{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
     overflow:hidden;display:flex;flex-direction:column;
@@ -164,7 +164,7 @@
   }
   .filters button:hover{color:var(--text)}
   .filters button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
-  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));grid-auto-flow:dense}
   .grid .card.wide{grid-column:span 2}
   @media (max-width:540px){ .grid{grid-template-columns:1fr 1fr;gap:10px} .grid .card.wide{grid-column:span 2} }
   .card{
@@ -280,7 +280,7 @@
       </div>
       <div class="stats">
         <div class="stat"><div class="n">500K+</div><div class="l" data-i18n="stat.views"></div></div>
-        <div class="stat"><div class="n">3+</div><div class="l" data-i18n="stat.brands"></div></div>
+        <div class="stat"><div class="n">4+</div><div class="l" data-i18n="stat.brands"></div></div>
         <div class="stat"><div class="n">NL · EN</div><div class="l" data-i18n="stat.lang"></div></div>
       </div>
     </div>
@@ -292,6 +292,7 @@
       <span class="label" data-i18n="clients.label"></span>
       <span class="name">Boxbollen</span>
       <span class="name">Qbuzz</span>
+      <span class="name">Bij Albrecht</span>
       <span class="name">The High Value Club</span>
     </div>
   </div>
@@ -396,19 +397,45 @@
   const WA_NUMBER = "31682832393";
 
   // tag: ads | organic | ugc | podcast | ai     wide: true for 16:9 footage
+  // tag: food | ugc | organic | podcast | ads | ai     wide: true for 16:9 footage
   const WORK = [
-    { file:"ai1.mov", title:"AI Concept 01", client:"Fabio", tag:"ai", wide:true },
-    { file:"ai2.mov", title:"AI Concept 02", client:"Fabio", tag:"ai", wide:true },
-    { file:"ai3.mp4", title:"AI Concept 03", client:"Fabio", tag:"ai", wide:true },
+    { file:"work/albrecht-01.mp4",              title:"Bij Albrecht 01",      client:"Bij Albrecht",        tag:"food" },
+    { file:"work/albrecht-02.mp4",              title:"Bij Albrecht 02",      client:"Bij Albrecht",        tag:"food" },
+    { file:"work/albrecht-03.mp4",              title:"Bij Albrecht 03",      client:"Bij Albrecht",        tag:"food" },
+    { file:"work/hvc-culture-insights-01.mp4",  title:"Culture Insights 01",  client:"The High Value Club", tag:"podcast" },
+    { file:"work/hvc-culture-insights-02.mp4",  title:"Culture Insights 02",  client:"The High Value Club", tag:"podcast" },
+    { file:"work/hvc-coaches-corner.mp4",       title:"Coaches Corner",       client:"The High Value Club", tag:"organic" },
+    { file:"work/qbuzz-04.mp4",                 title:"Veilig werken 01",     client:"Qbuzz",               tag:"organic" },
+    { file:"work/qbuzz-01.mp4",                 title:"Veilig werken 02",     client:"Qbuzz",               tag:"organic" },
+    { file:"work/qbuzz-02.mp4",                 title:"Veilig werken 03",     client:"Qbuzz",               tag:"organic" },
+    { file:"work/qbuzz-03.mp4",                 title:"Veilig werken 04",     client:"Qbuzz",               tag:"organic" },
+    { file:"work/qbuzz-05.mp4",                 title:"Veilig werken 05",     client:"Qbuzz",               tag:"organic" },
+    { file:"work/ugc-oakley.mp4",               title:"Oakley",               client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-oversized-studios.mp4",    title:"Oversized Studios",    client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-comma-football-01.mp4",    title:"Comma Football",       client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-comma-football-02.mp4",    title:"Comma Football II",    client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-gardpro.mp4",              title:"Gardpro",              client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-hears-sleep.mp4",          title:"Hears — Sleep",        client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-hears-club.mp4",           title:"Hears — Club",         client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-retropia.mp4",             title:"Retropia",             client:"UGC",                 tag:"ugc" },
+    { file:"work/ugc-dji-osmo-pocket-3.mp4",    title:"DJI Osmo Pocket 3",    client:"UGC",                 tag:"ugc", wide:true },
+    { file:"work/ai-01.mp4",                    title:"AI Concept 01",        client:"Fabio",               tag:"ai",  wide:true },
+    { file:"work/ai-02.mp4",                    title:"AI Concept 02",        client:"Fabio",               tag:"ai",  wide:true },
+    { file:"work/ai-03.mp4",                    title:"AI Concept 03",        client:"Fabio",               tag:"ai",  wide:true },
   ];
 
-  // First vertical clips are used in the hero reel; falls back to any clip.
-  const REEL = WORK.slice(0, 3);
+  // Short silent loops made for the hero, so the top of the page loads fast.
+  const REEL = [
+    { file:"work/hero-albrecht-02.mp4" },
+    { file:"work/hero-hvc-culture-insights-01.mp4" },
+    { file:"work/hero-ugc-gardpro.mp4" },
+  ];
 
   const CASES = [
-    { client:"The High Value Club", file:null,           tags:["ads","podcast","organic"], key:"hvc" },
-    { client:"Boxbollen",           file:null,           tags:["organic"],                key:"box" },
-    { client:"Qbuzz",               file:null,           tags:["organic"],                key:"qbuzz" },
+    { client:"The High Value Club", file:"work/hvc-culture-insights-01.mp4", tags:["ads","podcast","organic"], key:"hvc" },
+    { client:"Bij Albrecht",        file:"work/albrecht-01.mp4",             tags:["food"],                    key:"alb" },
+    { client:"Qbuzz",               file:"work/qbuzz-04.mp4",                tags:["organic"],                 key:"qbuzz" },
+    { client:"Boxbollen",           file:null,                               tags:["organic"],                 key:"box" },
   ];
 
   const SERVICES = [
@@ -442,11 +469,14 @@
       "case.box.need":"Content voor hun complete ecom-school community.",
       "case.box.made":"Editing van alle community- en cursuscontent.",
       "case.box.result":"",
-      "case.qbuzz.need":"Short-form video's voor organische socials.",
-      "case.qbuzz.made":"Shorts voor organisch posten.",
+      "case.alb.need":"De keuken, de gerechten en de sfeer van het restaurant laten zien.",
+      "case.alb.made":"Short-form video's van de keuken, het opmaken van gerechten en de zaak.",
+      "case.alb.result":"",
+      "case.qbuzz.need":"Medewerkers zelf laten vertellen over veilig werken.",
+      "case.qbuzz.made":"Een reeks van 5 ondertitelde shorts met medewerkers.",
       "case.qbuzz.result":"",
       "work.title":"Werk","work.desc":"Klik op een video om hem met geluid af te spelen.",
-      "filter.all":"Alles","filter.ads":"Ads","filter.organic":"Organisch","filter.ugc":"UGC","filter.podcast":"Podcast","filter.ai":"AI",
+      "filter.all":"Alles","filter.food":"Horeca","filter.ads":"Ads","filter.organic":"Organisch","filter.ugc":"UGC","filter.podcast":"Podcast & testimonials","filter.ai":"AI",
       "pkg.title":"Pakketten","pkg.desc":"Start met een pilot. Bevalt het? Dan gaan we maandelijks verder.",
       "pkg.pilot.n":"Pilot","pkg.pilot.p":"vanaf €750","pkg.pilot.s":"eenmalig",
       "pkg.pilot.l":["1 opnamedag","6 short-form video's","Simpel contentplan"],
@@ -490,11 +520,14 @@
       "case.box.need":"Content for their entire e-com school community.",
       "case.box.made":"Editing of all community and course content.",
       "case.box.result":"",
-      "case.qbuzz.need":"Short-form videos for organic social.",
-      "case.qbuzz.made":"Shorts for organic posting.",
+      "case.alb.need":"Show the restaurant's kitchen, dishes and atmosphere.",
+      "case.alb.made":"Short-form videos of the kitchen, plating and the venue.",
+      "case.alb.result":"",
+      "case.qbuzz.need":"Let employees tell the story of working safely, in their own words.",
+      "case.qbuzz.made":"A series of 5 subtitled shorts featuring employees.",
       "case.qbuzz.result":"",
       "work.title":"Work","work.desc":"Click a video to play it with sound.",
-      "filter.all":"All","filter.ads":"Ads","filter.organic":"Organic","filter.ugc":"UGC","filter.podcast":"Podcast","filter.ai":"AI",
+      "filter.all":"All","filter.food":"Hospitality","filter.ads":"Ads","filter.organic":"Organic","filter.ugc":"UGC","filter.podcast":"Podcast & testimonials","filter.ai":"AI",
       "pkg.title":"Packages","pkg.desc":"Start with a pilot. Like it? Then we continue monthly.",
       "pkg.pilot.n":"Pilot","pkg.pilot.p":"from €750","pkg.pilot.s":"one-off",
       "pkg.pilot.l":["1 shoot day","6 short-form videos","Simple content plan"],
@@ -522,7 +555,7 @@
   const PLAY_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
 
   const src = f => encodeURI("assets/" + f);
-  // Posters live next to the video as <name>.jpg once compressed; missing posters are harmless.
+  // Each video has a poster frame next to it with the same name and a .jpg extension.
   const poster = f => encodeURI("assets/" + f.replace(/\.[^.]+$/, ".jpg"));
 
   let lang = "nl";
