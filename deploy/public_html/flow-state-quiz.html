@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Is Flow State Filmmaking for you? | 1-minute fit check</title>
+<meta name="description" content="Seven quick questions to see how well Flow State Filmmaking fits you: the Skool community by Fabio Media for videographers who want to shoot, edit and sell like a studio." />
+<link rel="canonical" href="https://fabiometa.com/flow-state-quiz.html" />
+<meta name="theme-color" content="#0a0a0c" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0c'/%3E%3Ctext x='14' y='46' font-family='Arial,sans-serif' font-weight='800' font-size='40' fill='%23f4f4f6'%3EF%3C/text%3E%3Ccircle cx='48' cy='44' r='5' fill='%23ff5d3b'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Fabio Media" />
+<meta property="og:url" content="https://fabiometa.com/flow-state-quiz.html" />
+<meta property="og:title" content="Is Flow State Filmmaking for you? Take the 1-minute fit check" />
+<meta property="og:description" content="Seven questions. Get your compatibility score for the community." />
+<meta property="og:image" content="https://fabiometa.com/flow-state-og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --card:#16161c;
+    --card2:#1d1d25;
+    --text:#f4f4f6;
+    --muted:#9a9aa6;
+    --line:rgba(255,255,255,.09);
+    --accent:#ff5d3b;
+    --accent2:#ffb23b;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden;
+    display:flex;flex-direction:column;
+  }
+  body::before{
+    content:"";position:fixed;top:-220px;left:50%;transform:translateX(-50%);width:760px;height:560px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(255,93,59,.22),transparent 70%);filter:blur(20px);pointer-events:none;z-index:-1;
+  }
+  a{color:inherit}
+  button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+
+  header{max-width:640px;width:100%;margin:0 auto;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+  .brand{font-weight:800;letter-spacing:.04em;font-size:15px;color:var(--text);text-decoration:none}
+  .brand span{color:var(--accent)}
+
+  main{flex:1;width:100%;max-width:640px;margin:0 auto;padding:12px 20px 40px}
+  .eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  h1{font-size:clamp(32px,7vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:14px 0}
+  h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:#c9c9d2;font-size:17px;margin-bottom:26px}
+  .meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin-bottom:28px}
+  .meta b{color:var(--text)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-main{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#1a0d06;box-shadow:0 14px 34px -12px rgba(255,93,59,.6)}
+  .btn-ghost{border:1px solid rgba(255,255,255,.18)}
+  .btn-block{width:100%}
+
+  /* quiz */
+  .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:10px}
+  .back{color:var(--muted);font-size:13px;padding:6px 0}
+  .back:hover{color:var(--text)}
+  .back[hidden]{visibility:hidden;display:inline}
+  .bar{height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-bottom:28px}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
+  .q{font-size:clamp(23px,5vw,30px);line-height:1.2;font-weight:800;letter-spacing:-.015em;margin-bottom:20px}
+  .opts{display:grid;gap:10px}
+  .opt{
+    width:100%;text-align:left;display:flex;gap:14px;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:16px;
+    transition:border-color .15s,background .15s;
+  }
+  .opt:hover,.opt:focus-visible{border-color:rgba(255,93,59,.6);background:var(--card2);outline:none}
+  .opt.picked{border-color:var(--accent);background:rgba(255,93,59,.1)}
+  .opt i{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700;color:var(--muted);border:1px solid var(--line)}
+
+  /* result */
+  .score{display:flex;align-items:center;gap:22px;margin:18px 0 22px}
+  .ring{flex:none;width:118px;height:118px;border-radius:50%;display:grid;place-items:center;position:relative}
+  .ring::after{content:"";position:absolute;inset:10px;border-radius:50%;background:var(--bg)}
+  .ring span{position:relative;z-index:1;font-size:30px;font-weight:800}
+  .verdict{font-size:clamp(24px,5.4vw,32px);line-height:1.15;font-weight:800;letter-spacing:-.015em}
+  .tag{display:inline-block;margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2)}
+  .why{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 8px;margin:6px 0 22px}
+  .why h3{font-size:15px;margin-bottom:10px}
+  .why ul{list-style:none;display:grid;gap:10px;padding-bottom:12px}
+  .why li{display:flex;gap:10px;color:#d4d4dc;font-size:15px}
+  .why li::before{content:"✓";color:var(--accent);font-weight:800}
+  .offer{color:var(--muted);font-size:14px;text-align:center;margin-top:12px}
+  .again{display:block;margin:18px auto 0;color:var(--muted);font-size:14px;text-decoration:underline;text-underline-offset:3px}
+  .screen{animation:in .25s ease}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  footer{max-width:640px;width:100%;margin:0 auto;padding:20px 20px calc(24px + env(safe-area-inset-bottom));color:var(--muted);font-size:12.5px;display:flex;gap:6px 16px;flex-wrap:wrap;justify-content:space-between}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="https://fabiometa.com/portfolio/">FABIO MEDIA<span>.</span></a>
+    <span>Flow State Filmmaking</span>
+  </header>
+
+  <main id="app">
+    <section class="screen" id="intro">
+      <div class="eyebrow">1-minute fit check</div>
+      <h1>Is Flow State Filmmaking <em>for you?</em></h1>
+      <p class="lead">Flow State Filmmaking is my Skool community for videographers who want to shoot, edit and sell like a studio. Answer seven quick questions and see how well it fits where you are right now.</p>
+      <div class="meta"><span><b>7</b> questions</span><span><b>±1</b> minute</span><span>Nothing is saved or sent</span></div>
+      <button class="btn btn-main btn-block" id="start" type="button">Start the quiz</button>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="yr"></span> Fabio Media · KvK 42019388</span>
+    <span><a href="https://fabiometa.com/portfolio/#privacy">Privacy</a> · <a href="https://fabiometa.com/portfolio/">Portfolio</a></span>
+  </footer>
+
+<script>
+  const SKOOL = "https://www.skool.com/flow-state-filmmaking-2007/about";
+
+  // Each option has a weight (0–3: how much the community helps this person)
+  // and an optional reason shown on the result screen.
+  const QUESTIONS = [
+    {
+      q: "Where is your video work right now?",
+      opts: [
+        { t: "I get paid, but not enough", w: 3, why: "You already have paying clients. The pricing and positioning lessons help you charge what your work is worth." },
+        { t: "I shoot for free to build my portfolio", w: 2, why: "You're building a reel. You'll learn how to turn it into your first paid projects." },
+        { t: "I haven't had a paid project yet", w: 2, why: "You're at the start, which is the best moment to set up a proper workflow and pricing." },
+        { t: "It's just a hobby, I don't plan to charge", w: 0 },
+      ],
+    },
+    {
+      q: "What do you usually charge for a project?",
+      opts: [
+        { t: "Under €300", w: 3, why: "Under €300 a project is exactly the situation the pricing guide is built for." },
+        { t: "€300 – €1,000", w: 3, why: "You're in the €300–€1,000 range. Moving to outcome-based packages is the next step." },
+        { t: "More than €1,000", w: 1 },
+        { t: "I honestly don't know what to charge", w: 3, why: "Not knowing what to charge is fixed with the pricing guide and real examples of quotes." },
+      ],
+    },
+    {
+      q: "How do you find your clients?",
+      opts: [
+        { t: "Referrals and DMs, no real system", w: 3, why: "Clients come in waves without a system. You'll learn a repeatable way to land work." },
+        { t: "I don't have clients yet", w: 2, why: "No clients yet? The selling stage shows you how to pitch your first ones." },
+        { t: "I have a pipeline that mostly works", w: 1 },
+        { t: "They find me, but rarely", w: 3, why: "Waiting for clients to find you keeps you stuck. You'll learn to go out and get them." },
+      ],
+    },
+    {
+      q: "What slows you down the most?",
+      opts: [
+        { t: "Pricing and selling my work", w: 3, why: "Selling is your bottleneck, and pricing and selling are a core part of the community." },
+        { t: "Editing and colour take forever", w: 3, why: "Editing and colour slow you down. You get my full editing and grading workflow, so every project starts from a system instead of from zero." },
+        { t: "Getting the shots right on set", w: 2, why: "You'll learn story-first shot lists and on-set habits that make the edit easy." },
+        { t: "Finding time", w: 1 },
+      ],
+    },
+    {
+      q: "Which editing software do you use?",
+      opts: [
+        { t: "DaVinci Resolve", w: 3, why: "You edit in DaVinci Resolve, the same software I teach in." },
+        { t: "Premiere Pro or Final Cut", w: 2 },
+        { t: "CapCut or another phone app", w: 1 },
+        { t: "I don't edit yet", w: 1 },
+      ],
+    },
+    {
+      q: "How many hours a week can you put in?",
+      opts: [
+        { t: "7 or more", w: 3, why: "With 7+ hours a week, you can work through the lessons fast and apply them right away." },
+        { t: "3 to 5", w: 3, why: "3–5 hours a week is enough. The lessons are short and made to use on your next job." },
+        { t: "It depends on the week", w: 2 },
+        { t: "Less than an hour", w: 0 },
+      ],
+    },
+    {
+      q: "Where do you want to be in 12 months?",
+      opts: [
+        { t: "Making a full-time living from video", w: 3, why: "You want to go full-time, the exact path I'm walking with Fabio Media." },
+        { t: "A solid side income from video", w: 3, why: "A solid side income is very doable with better pricing and a few repeat clients." },
+        { t: "Just better at filmmaking, for fun", w: 1 },
+        { t: "Not sure yet", w: 1 },
+      ],
+    },
+  ];
+
+  const app = document.getElementById("app");
+  let step = 0;
+  let answers = [];
+  let busy = false;
+
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+
+  function show(html){
+    app.innerHTML = `<section class="screen">${html}</section>`;
+    const first = app.querySelector("button, a");
+    if (first) first.focus({ preventScroll:true });
+    scrollTo({ top:0 });
+  }
+
+  function renderQuestion(){
+    const item = QUESTIONS[step];
+    show(`
+      <div class="top">
+        <button class="back" type="button" ${step === 0 ? "hidden" : ""}>← Back</button>
+        <span>Question ${step + 1} of ${QUESTIONS.length}</span>
+      </div>
+      <div class="bar"><i style="width:${(step / QUESTIONS.length) * 100}%"></i></div>
+      <h2 class="q">${esc(item.q)}</h2>
+      <div class="opts">
+        ${item.opts.map((o, i) => `<button class="opt${answers[step] === i ? " picked" : ""}" type="button" data-i="${i}"><i>${String.fromCharCode(65 + i)}</i><span>${esc(o.t)}</span></button>`).join("")}
+      </div>`);
+    // Focus the first option rather than the hidden Back button.
+    app.querySelector(".opt").focus({ preventScroll:true });
+  }
+
+  function renderResult(){
+    const max = QUESTIONS.reduce((s, q) => s + Math.max(...q.opts.map(o => o.w)), 0);
+    const got = answers.reduce((s, a, i) => s + QUESTIONS[i].opts[a].w, 0);
+    const pct = Math.round((got / max) * 100);
+    const reasons = answers.map((a, i) => QUESTIONS[i].opts[a].why).filter(Boolean).slice(0, 4);
+
+    let tag, verdict, text, cta;
+    if (pct >= 80) {
+      tag = "Strong fit";
+      verdict = "This is exactly who I built it for.";
+      text = "You're exactly who it's built for, and you have the time to put in. Start the free trial and watch the first module tonight.";
+      cta = "Join Flow State Filmmaking";
+    } else if (pct >= 60) {
+      tag = "Good fit";
+      verdict = "You'd get real value out of this.";
+      text = "You have at least one of the gaps the community is built to close: pricing, workflow or finding clients. The free trial lets you see it for yourself.";
+      cta = "Start your free trial";
+    } else if (pct >= 40) {
+      tag = "Decent fit";
+      verdict = "Parts of it will help you.";
+      text = "Not everything will be new to you, but the pricing and selling side could still make a difference. Try it for free and decide then.";
+      cta = "Have a look for free";
+    } else {
+      tag = "Early, but welcome";
+      verdict = "You might be a bit early, and that's fine.";
+      text = "If you're not charging yet or don't have much time, you can still join and go at your own pace. The trial costs you nothing.";
+      cta = "Try it free anyway";
+    }
+
+    const color = pct >= 60 ? "var(--accent)" : "var(--accent2)";
+    show(`
+      <div class="eyebrow">Your result</div>
+      <div class="score">
+        <div class="ring" style="background:conic-gradient(${color} ${pct * 3.6}deg, var(--line) 0)"><span>${pct}%</span></div>
+        <div><span class="tag">${tag}</span><div class="verdict">${verdict}</div></div>
+      </div>
+      <p class="lead">${text}</p>
+      ${reasons.length ? `<div class="why"><h3>Why it fits you</h3><ul>${reasons.map(r => `<li>${esc(r)}</li>`).join("")}</ul></div>` : ""}
+      <a class="btn btn-main btn-block" href="${SKOOL}">${cta} →</a>
+      <p class="offer">Opens Skool · free trial, then $35/month · cancel any time</p>
+      <button class="again" type="button">Retake the quiz</button>`);
+  }
+
+  app.addEventListener("click", e => {
+    if (e.target.closest("#start")) { step = 0; answers = []; renderQuestion(); return; }
+    if (e.target.closest(".again")) { step = 0; answers = []; renderQuestion(); return; }
+    if (e.target.closest(".back")) { step = Math.max(0, step - 1); renderQuestion(); return; }
+    const opt = e.target.closest(".opt");
+    if (!opt || busy) return;
+    busy = true;
+    answers[step] = Number(opt.dataset.i);
+    opt.classList.add("picked");
+    step++;
+    // A short pause so the tap registers visually before moving on.
+    setTimeout(() => { busy = false; step < QUESTIONS.length ? renderQuestion() : renderResult(); }, 180);
+  });
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

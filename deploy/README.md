@@ -13,6 +13,8 @@ The files in `deploy/public_html/` go one level up, in `public_html/` itself:
 | `index.html` | `public_html/index.html` | Sends fabiometa.com to the portfolio (replaces the Flow State page) |
 | `robots.txt` | `public_html/robots.txt` | Tells search engines where the sitemap is |
 | `fabiomedia/index.html` | `public_html/fabiomedia/index.html` | Sends the old portfolio link to the new one |
+| `flow-state-quiz.html` | `public_html/flow-state-quiz.html` | Fit-check quiz for the Flow State Filmmaking Skool community |
+| `flow-state-og.jpg` | `public_html/flow-state-og.jpg` | Link preview image for the quiz |
 
 Leave everything else in `public_html` alone, especially `shop/`, `cgi-bin/`
 and the Google verification file `google2aac0d0b5ff29d71.html`.
