@@ -201,6 +201,11 @@
   .case dl{display:grid;gap:10px}
   .case dt{font-size:11.5px;color:var(--accent);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
   .case dd{font-size:14.5px;color:#d4d4dc}
+  .case-link{font-weight:700;font-size:14.5px;color:var(--accent2);text-decoration:none}
+  .case-link:hover{text-decoration:underline}
+  .svc-links{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin-top:18px;font-size:14px;color:var(--muted)}
+  .svc-links a{border:1px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;color:var(--text);font-weight:600}
+  .svc-links a:hover{border-color:rgba(255,93,59,.5)}
   .case .result{
     margin-top:auto;padding:12px 14px;border-radius:12px;
     background:rgba(255,93,59,.08);border:1px solid rgba(255,93,59,.25);font-weight:600;font-size:14.5px;
@@ -453,6 +458,13 @@
       <div class="service"><div class="ic">✨</div>
         <h3>AI-content</h3><p>AI-effecten en visuals die opvallen in de feed. Mijn best bekeken video: 500K+ views.</p></div><!--/pre--></div>
     <p class="swipe-hint" data-i18n="swipe">Swipe voor meer →</p>
+    <nav class="svc-links" aria-label="Diensten">
+      <span data-i18n="svc.more">Meer over:</span>
+      <a href="bedrijfsvideo-eindhoven.html" data-i18n="svc.link.company">Bedrijfsvideo's</a>
+      <a href="horeca-video.html" data-i18n="svc.link.horeca">Horeca video &amp; content</a>
+      <a href="testimonial-video.html" data-i18n="svc.link.testimonial">Testimonial video's</a>
+      <a href="social-media-content.html" data-i18n="svc.link.social">Reels, TikToks &amp; ads</a>
+    </nav>
   </section>
 
   <section class="section" id="cases">
@@ -471,6 +483,7 @@
             <div><dt>Gemaakt</dt><dd>Paid ads, podcast-edits, klanttestimonials en een eventdag.</dd></div>
           </dl>
           <div class="result">Verlengd met een groter tweede pakket.</div>
+          <a class="case-link" href="case-the-high-value-club.html">Lees de hele case →</a>
         </div></article><article class="case">
         <div class="media"><div class="play"><div class="pbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg></div></div></div>
         <div class="body">
@@ -481,6 +494,7 @@
             <div><dt>Gemaakt</dt><dd>Short-form video's van de keuken, het opmaken van gerechten en de zaak.</dd></div>
           </dl>
           
+          <a class="case-link" href="case-bij-albrecht.html">Lees de hele case →</a>
         </div></article><article class="case">
         <div class="media"><div class="play"><div class="pbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg></div></div></div>
         <div class="body">
@@ -491,6 +505,7 @@
             <div><dt>Gemaakt</dt><dd>Een reeks van 5 ondertitelde shorts met medewerkers.</dd></div>
           </dl>
           
+          <a class="case-link" href="case-qbuzz.html">Lees de hele case →</a>
         </div></article><article class="case">
         <div class="media wide"><div class="play"><div class="pbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg></div></div></div>
         <div class="body">
@@ -500,6 +515,7 @@
             <div><dt>Vraag</dt><dd>Content voor hun complete ecom-school community.</dd></div>
             <div><dt>Gemaakt</dt><dd>Editing van alle community- en cursuscontent.</dd></div>
           </dl>
+          
           
         </div></article><!--/pre--></div>
     <p class="swipe-hint" data-i18n="swipe">Swipe voor meer →</p>
@@ -600,6 +616,7 @@
 
   <footer>
     <span>© <span id="yr"></span> Fabio Media · Eindhoven · KvK 42019388</span>
+    <span class="foot-links"><a href="bedrijfsvideo-eindhoven.html">Bedrijfsvideo Eindhoven</a> · <a href="horeca-video.html">Horeca video</a> · <a href="testimonial-video.html">Testimonial video</a> · <a href="social-media-content.html">Reels &amp; ads</a></span>
     <span><a href="#privacy" data-legal data-i18n="privacy.link">Privacyverklaring</a> · <a href="https://www.instagram.com/fabiometa_/" target="_blank" rel="noopener">Instagram</a> · <a href="mailto:fabiometacollabs@gmail.com">fabiometacollabs@gmail.com</a></span>
   </footer>
 
@@ -671,9 +688,9 @@
   ];
 
   const CASES = [
-    { client:"The High Value Club", file:"work/hvc-trailer.mp4",             tags:["ads","podcast","organic"], key:"hvc" },
-    { client:"Bij Albrecht",        file:"work/albrecht-01.mp4",             tags:["food"],                    key:"alb" },
-    { client:"Qbuzz",               file:"work/qbuzz-04.mp4",                tags:["organic"],                 key:"qbuzz" },
+    { client:"The High Value Club", file:"work/hvc-trailer.mp4",             tags:["ads","podcast","organic"], key:"hvc",   page:"case-the-high-value-club.html" },
+    { client:"Bij Albrecht",        file:"work/albrecht-01.mp4",             tags:["food"],                    key:"alb",   page:"case-bij-albrecht.html" },
+    { client:"Qbuzz",               file:"work/qbuzz-04.mp4",                tags:["organic"],                 key:"qbuzz", page:"case-qbuzz.html" },
     { client:"Boxbollen",           file:"work/boxbollen-module-1.mp4",      tags:["course"],                  key:"box", wide:true },
   ];
 
@@ -717,6 +734,8 @@
       "work.title":"Werk","work.desc":"Tik of klik op een video om hem met geluid te bekijken.",
       "swipe":"Swipe voor meer →","lb.count":"van",
       "work.all":"Bekijk alle {n} video's ↓","work.less":"Toon minder ↑",
+      "case.more":"Lees de hele case →","svc.more":"Meer over:",
+      "svc.link.company":"Bedrijfsvideo's","svc.link.horeca":"Horeca video & content","svc.link.testimonial":"Testimonial video's","svc.link.social":"Reels, TikToks & ads",
       "filter.all":"Alles","filter.food":"Horeca","filter.ads":"Ads","filter.organic":"Organisch","filter.course":"Cursus","filter.ugc":"UGC","filter.podcast":"Podcast & testimonials","filter.ai":"AI",
       "pkg.title":"Pakketten","pkg.desc":"Start met een pilot. Bevalt het? Dan gaan we maandelijks verder.",
       "pkg.pilot.n":"Pilot","pkg.pilot.p":"vanaf €750","pkg.pilot.s":"eenmalig",
@@ -794,6 +813,8 @@
       "work.title":"Work","work.desc":"Tap or click a video to watch it with sound.",
       "swipe":"Swipe for more →","lb.count":"of",
       "work.all":"See all {n} videos ↓","work.less":"Show less ↑",
+      "case.more":"Read the full case (Dutch) →","svc.more":"More about (in Dutch):",
+      "svc.link.company":"Company videos","svc.link.horeca":"Hospitality video & content","svc.link.testimonial":"Testimonial videos","svc.link.social":"Reels, TikToks & ads",
       "filter.all":"All","filter.food":"Hospitality","filter.ads":"Ads","filter.organic":"Organic","filter.course":"Course","filter.ugc":"UGC","filter.podcast":"Podcast & testimonials","filter.ai":"AI",
       "pkg.title":"Packages","pkg.desc":"Start with a pilot. Like it? Then we continue monthly.",
       "pkg.pilot.n":"Pilot","pkg.pilot.p":"from €750","pkg.pilot.s":"one-off",
@@ -1030,6 +1051,7 @@
             <div><dt>${t("case.made")}</dt><dd>${t(`case.${c.key}.made`)}</dd></div>
           </dl>
           ${result ? `<div class="result">${result}</div>` : ""}
+          ${c.page ? `<a class="case-link" href="${c.page}">${t("case.more")}</a>` : ""}
         </div>`;
       if (c.file) {
         const media = el.querySelector(".media");
